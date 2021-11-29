@@ -1,0 +1,1 @@
+# opinew-shogun-frontend
