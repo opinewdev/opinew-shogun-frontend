@@ -25,20 +25,23 @@
 import * as React from 'react'
 
 /**
- * @typedef { import("lib/types").CmsProduct } CmsProduct
+ * @typedef { import("lib/types").ShopifyProduct } ShopifyProduct
  * @typedef {{
- *   product?: CmsProduct
+ *   product?: ShopifyProduct
  * }} ProductBoxProps
  *
  * @param { ProductBoxProps } props
  **/
 const OpinewProductPlugin = ({ product }) => {
-  const productData = JSON.stringify(product, null, 4)
+  const { name, slug, description, externalId } = product || {}
 
   return (
     <div>
       <h4>Opinew test section</h4>
-      <code>{{ productData }}</code>
+      <p>{name}</p>
+      <p>{slug}</p>
+      <p>{description}</p>
+      <p>{externalId}</p>
     </div>
   )
 }
