@@ -24,7 +24,7 @@
  */
 import { useNormalizedProduct } from 'Components/Hooks'
 import * as React from 'react'
-import OpinewWidget from './shogun-product.umd'
+import OpinewWidget from 'Components/OpinewProduct'
 
 /**
  * @typedef { import("lib/types").ShopifyProduct } ShopifyProduct
