@@ -24,6 +24,7 @@
  */
 import { useNormalizedProduct } from 'Components/Hooks'
 import * as React from 'react'
+import OpinewWidget from './shogun-product.umd'
 
 /**
  * @typedef { import("lib/types").ShopifyProduct } ShopifyProduct
@@ -33,18 +34,14 @@ import * as React from 'react'
  *
  * @param { ProductBoxProps } props
  **/
-const OpinewProductPlugin = ({ product: shopifyProduct }) => {
-  const product = useNormalizedProduct(shopifyProduct)
-  const { name, slug, description, id } = product || {}
+const OpinewProductPlugin = ({ product }) => {
+
+  const { name, slug, description, externalId } = product || {}
 
   return (
     <div>
-      <h4>Opinew test section</h4>
-      <p>{name}</p>
-      <p>{slug}</p>
-      <p>{description}</p>
-      <p>{id}</p>
-      <p>{(product || {}).id}</p>
+      <h5>Opinew Product Plugin: {name}</h5>
+      <OpinewWidget productId={externalId} />
     </div>
   )
 }
