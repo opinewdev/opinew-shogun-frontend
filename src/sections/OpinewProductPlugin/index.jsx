@@ -22,6 +22,7 @@
  * ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE
  * OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
+import { useNormalizedProduct } from 'Components/Hooks'
 import * as React from 'react'
 
 /**
@@ -32,8 +33,9 @@ import * as React from 'react'
  *
  * @param { ProductBoxProps } props
  **/
-const OpinewProductPlugin = ({ product }) => {
-  const { name, slug, description, externalId } = product || {}
+const OpinewProductPlugin = ({ product: shopifyProduct }) => {
+  const product = useNormalizedProduct(shopifyProduct)
+  const { name, slug, description, id } = product || {}
 
   return (
     <div>
@@ -41,7 +43,8 @@ const OpinewProductPlugin = ({ product }) => {
       <p>{name}</p>
       <p>{slug}</p>
       <p>{description}</p>
-      <p>{externalId}</p>
+      <p>{id}</p>
+      <p>{(product || {}).id}</p>
     </div>
   )
 }
