@@ -1,0 +1,35 @@
+import { Meta, Preview, Story } from '@storybook/addon-docs'
+import AccountOrderHistory from '.'
+import getDecorators from './decorators'
+import { getPlatformDecorator } from '../../lib/decorators'
+import Description from './description.mdx'
+
+<Meta
+  title="UI Primitives/Shopify/AccountOrderHistory"
+  parameters={{ layout: 'padded' }}
+  decorators={[getPlatformDecorator('shopify')]}
+/>
+
+# AccountOrderHistory
+
+<Description />
+
+## Examples
+
+### Default
+
+<Preview>
+  <Story
+    name="Default"
+    decorators={getDecorators('john@shopify-platform.com')}
+    parameters={{
+      docs: {
+        source: {
+          code: '<AccountOrderHistory orders={orders} />',
+        },
+      },
+    }}
+  >
+    <AccountOrderHistory />
+  </Story>
+</Preview>

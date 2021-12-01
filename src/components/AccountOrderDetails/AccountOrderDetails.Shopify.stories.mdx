@@ -1,0 +1,41 @@
+import { ArgsTable, Meta, Preview, Story } from '@storybook/addon-docs'
+
+import getDecorators from './decorators'
+import { getPlatformDecorator } from '../../lib/decorators'
+import Description from './description.mdx'
+import AccountOrderDetails from '.'
+
+<Meta
+  title="Components/Shopify/AccountOrderDetails"
+  component={AccountOrderDetails}
+  parameters={{ layout: 'centered' }}
+  decorators={[getPlatformDecorator('shopify')]}
+/>
+
+# AccountOrderDetails
+
+<Description />
+
+## Props
+
+<ArgsTable of={AccountOrderDetails} />
+
+## Examples
+
+### Shopify
+
+<Preview>
+  <Story
+    name="Shopify"
+    decorators={getDecorators('john@shopify-platform.com', 1)}
+    parameters={{
+      docs: {
+        source: {
+          code: '<AccountOrderDetails order={order} />',
+        },
+      },
+    }}
+  >
+    <AccountOrderDetails />
+  </Story>
+</Preview>

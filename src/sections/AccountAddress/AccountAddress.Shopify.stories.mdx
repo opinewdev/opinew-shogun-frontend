@@ -1,0 +1,53 @@
+import { ArgsTable, Meta, Preview, Story } from '@storybook/addon-docs'
+
+import {
+  getCustomerDecorator,
+  getPlatformDecorator,
+  getQueryDecorators,
+} from '../../lib/decorators'
+import AccountAddress from '.'
+import Description from '.'
+
+<Meta
+  title="Sections/Shopify/AccountAddress"
+  component={AccountAddress}
+  decorators={[getPlatformDecorator('shopify')]}
+/>
+
+# Header
+
+<Description />
+
+## Props
+
+<ArgsTable of={AccountAddress} />
+
+## Examples
+
+### Create
+
+<Preview>
+  <Story name="Create" decorators={[getCustomerDecorator('john@shopify-platform.com')]}>
+    {args => <AccountAddress {...args} />}
+  </Story>
+</Preview>
+
+### Edit
+
+<Preview>
+  <Story
+    name="Edit"
+    parameters={{ query: { id: 'Z2f2lkj432vc2hvcGlaeS9DdXN0h21eci81MTIzrjA5NTU5' } }}
+    decorators={[
+      getCustomerDecorator('john@shopify-platform.com'),
+      ...getQueryDecorators(
+        {
+          query: { id: 'Z2f2lkj432vc2hvcGlaeS9DdXN0h21eci81MTIzrjA5NTU5' },
+        },
+        '/account/address',
+      ),
+    ]}
+  >
+    {args => <AccountAddress {...args} />}
+  </Story>
+</Preview>

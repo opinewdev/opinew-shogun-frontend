@@ -1,0 +1,40 @@
+import { Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs'
+import LinkTo from '@storybook/addon-links/react'
+
+import { bigCommerceProducts } from '../../lib/mocks'
+import ProductGridItem from '.'
+import { getPlatformDecorator } from '../../lib/decorators'
+import List from '../List'
+import Description from './description.mdx'
+import Usage from './usage.mdx'
+
+<Meta
+  title="UI Primitives/BigCommerce/ProductGridItem"
+  component={ProductGridItem}
+  parameters={{ layout: 'centered' }}
+  decorators={[getPlatformDecorator('big_commerce')]}
+/>
+
+# ProductGridItem
+
+<Description />
+
+## Usage
+
+<Usage />
+
+## Props
+
+<ArgsTable of={ProductGridItem} />
+
+## Examples
+
+### Default
+
+<Canvas>
+  <Story name="Default">
+    <List style={{ width: '320px', height: '320px' }}>
+      <ProductGridItem product={bigCommerceProducts[0]} />
+    </List>
+  </Story>
+</Canvas>

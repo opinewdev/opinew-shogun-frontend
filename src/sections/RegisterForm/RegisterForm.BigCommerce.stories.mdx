@@ -1,0 +1,30 @@
+import { ArgsTable, Meta, Preview, Story } from '@storybook/addon-docs'
+
+import { getPlatformDecorator, getCustomerDecorator } from '../../lib/decorators'
+
+import RegisterForm from '.'
+import Description from './description.mdx'
+
+<Meta
+  title="Sections/BigCommerce/RegisterForm"
+  component={RegisterForm}
+  decorators={[getPlatformDecorator('big_commerce')]}
+/>
+
+# RegisterForm
+
+<Description />
+
+## Props
+
+<ArgsTable of={RegisterForm} />
+
+## Examples
+
+### Default
+
+<Preview>
+  <Story name="Default" decorators={[getCustomerDecorator()]}>
+    <RegisterForm />
+  </Story>
+</Preview>
