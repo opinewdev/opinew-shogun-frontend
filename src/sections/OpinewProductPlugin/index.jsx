@@ -22,8 +22,8 @@
  * ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE
  * OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
-import * as React from 'react';
-import 'Components/OpinewProduct/product-plugin';
+import * as React from 'react'
+import ProductPlugin from 'Components/OpinewProduct'
 
 /**
  * @typedef { import("lib/types").ShopifyProduct } ShopifyProduct
@@ -33,16 +33,16 @@ import 'Components/OpinewProduct/product-plugin';
  *
  * @param { ProductBoxProps } props
  **/
-const OpinewProductPlugin = ({ product }) => {
 
-  const { name, slug, description, externalId } = product || {};
+const OpinewProductPlugin = ({ product }) => {
+  const { name, slug, description, externalId } = product || {}
 
   return (
     <div>
       <h5>Opinew Product Plugin: {name}</h5>
-      <product-plugin productId={externalId} />
+      <ProductPlugin productId={externalId} />
     </div>
-  );
-};
+  )
+}
 
-export default OpinewProductPlugin;
+export default OpinewProductPlugin
