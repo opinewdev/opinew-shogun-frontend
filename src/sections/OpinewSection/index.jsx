@@ -23,22 +23,8 @@
  * OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 import * as React from 'react'
-// import './product-plugin'
-
-function injectAssets() {
-  const BASE_PATH = 'https://cdn.opinew.com/shop-widgets-components/v1/static/'
-
-  if (!document.querySelector('script[src*="shop-widgets-components/v1/static/"]')) {
-    const scr = document.createElement('script')
-
-    scr.src = BASE_PATH + 'js/index.js'
-    const css = document.createElement('link')
-
-    css.rel = 'stylesheet'
-    css.href = BASE_PATH + 'css/index.css'
-    ;[scr, css].forEach(node => document.head.appendChild(node))
-  }
-}
+import OpinewPlugin from 'Components/OpinewPlugin'
+import Container from 'Components/Container'
 
 /**
  * @typedef { import("lib/types").ShopifyProduct } ShopifyProduct
@@ -50,11 +36,10 @@ function injectAssets() {
  *
  * @param { OpinewProps } props
  **/
-const OpinewProductPlugin = ({ product, domain, type, ...args }) => {
-  injectAssets()
-  const { externalId } = product || {}
-
-  return <opinew-plugin product-id={externalId} domain={domain} type={type} {...args} />
-}
+const OpinewProductPlugin = props => (
+  <Container constrainContent as="section" variant="section-wrapper">
+    <OpinewPlugin {...props} />
+  </Container>
+)
 
 export default OpinewProductPlugin

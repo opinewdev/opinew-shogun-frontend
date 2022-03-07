@@ -1,0 +1,80 @@
+import {ArgsTable, Canvas, Meta, Story} from '@storybook/addon-docs'
+import {shopifyProducts} from '../../lib/mocks'
+import OpinewPlugin from '.'
+
+
+<Meta
+    title="Sections/Shopify/OpinewPlugin"
+    component={OpinewPlugin}
+    argTypes={{
+        domain: {
+            control: 'text',
+        },
+        type: {
+            control: {
+                type: 'select',
+                options: ['product', 'floating', 'all', 'carousel', 'request', 'product-stars', 'collection-stars']
+            },
+        },
+        productId: {
+            control: {
+                type: 'text',
+            },
+        },
+    }}
+    parameters={{layout: 'centered'}}
+/>
+
+# OpinewSection
+
+OpinewPlugin is an Opinew shop widgets component for Shogun frontend.
+It can render every type of Opinew widget depending on passed arguments.
+
+## Props
+
+<ArgsTable of={OpinewPlugin}/>
+
+## Examples
+
+
+### Product Plugin
+
+<Canvas>
+    <Story name="Product Plugin" args={{type: 'product', domain: 'opinew.myshopify.com', product: shopifyProducts[0]}}>
+        {args => <OpinewPlugin {...args} style={{width: '70vw'}}/>}
+    </Story>
+</Canvas>
+
+### All reviews Plugin
+
+<Canvas>
+    <Story name="All reviews Plugin" args={{type: 'all', domain: 'opinew.myshopify.com'}}>
+        {args => <OpinewPlugin {...args} style={{width: '70vw'}}/>}
+    </Story>
+</Canvas>
+
+### Carousel Plugin
+
+<Canvas>
+    <Story name="Carousel Plugin" args={{type: 'carousel', domain: 'opinew.myshopify.com'}}>
+        {args => <OpinewPlugin {...args} style={{width: '70vw'}}/>}
+    </Story>
+</Canvas>
+
+### Product Stars Plugin
+
+<Canvas>
+    <Story name="Product Stars Plugin"
+           args={{type: 'product-stars', domain: 'opinew.myshopify.com', product: shopifyProducts[0]}}>
+        {args => <OpinewPlugin {...args}/>}
+    </Story>
+</Canvas>
+
+### Collection stars Plugin
+
+<Canvas>
+    <Story name="Collection stars Plugin"
+           args={{type: 'collection-stars', domain: 'opinew.myshopify.com', product: shopifyProducts[0]}}>
+        {args => <OpinewPlugin {...args}/>}
+    </Story>
+</Canvas>
