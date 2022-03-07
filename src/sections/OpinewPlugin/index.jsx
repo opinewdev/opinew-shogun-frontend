@@ -23,6 +23,7 @@
  * OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 import * as React from 'react'
+// import './product-plugin'
 
 function injectAssets() {
   const BASE_PATH = 'https://cdn.opinew.com/shop-widgets-components/v1/static/'
@@ -40,16 +41,20 @@ function injectAssets() {
 }
 
 /**
+ * @typedef { import("lib/types").ShopifyProduct } ShopifyProduct
  * @typedef {{
- *  children: React.ReactNode
- * }} AppProps
+ *   product?: ShopifyProduct
+ *   domain?: string
+ *   type: 'product'| 'floating' | 'all' | 'carousel' | 'request' | 'product-stars' | 'collection-stars'
+ * }} OpinewProps
  *
- * @param { AppProps } props
- */
-const OpinewProvider = ({ children, ...rest }) => {
+ * @param { OpinewProps } props
+ **/
+const OpinewProductPlugin = ({ product, domain, type, ...args }) => {
   injectAssets()
+  const { externalId } = product || {}
 
-  return <div {...rest}> {{ children }} </div>
+  return <opinew-plugin product-id={externalId} domain={domain} type={type} {...args} />
 }
 
-export default OpinewProvider
+export default OpinewProductPlugin

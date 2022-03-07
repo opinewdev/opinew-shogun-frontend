@@ -96,6 +96,7 @@ export const shopifyProducts: ShopifyProduct[] = [
     ],
     metaTitle: 'November Blue',
     metaDescription: '',
+    externalId: 4901047402567,
   },
   {
     name: 'Messenger Mini U-lock',
