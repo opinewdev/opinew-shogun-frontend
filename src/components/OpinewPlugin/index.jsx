@@ -27,16 +27,18 @@ import * as React from 'react'
 function injectAssets() {
   const BASE_PATH = 'https://cdn.opinew.com/shop-widgets-components/v1/static/'
 
-  if (!document.querySelector('script[src*="shop-widgets-components/v1/static/"]')) {
-    const scr = document.createElement('script')
+  try {
+    if (!document.querySelector('script[src*="shop-widgets-components/v1/static/"]')) {
+      const scr = document.createElement('script')
 
-    scr.src = BASE_PATH + 'js/index.js'
-    const css = document.createElement('link')
+      scr.src = BASE_PATH + 'js/index.js'
+      const css = document.createElement('link')
 
-    css.rel = 'stylesheet'
-    css.href = BASE_PATH + 'css/index.css'
-    ;[scr, css].forEach(node => document.head.appendChild(node))
-  }
+      css.rel = 'stylesheet'
+      css.href = BASE_PATH + 'css/index.css'
+      ;[scr, css].forEach(node => document.head.appendChild(node))
+    }
+  } catch (_) {}
 }
 
 /**
