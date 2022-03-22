@@ -22,9 +22,9 @@
  * ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE
  * OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
-import * as React from 'react'
-import OpinewPlugin from 'Components/OpinewPlugin'
 import Container from 'Components/Container'
+import OpinewPlugin from 'Components/OpinewPlugin'
+import * as React from 'react'
 
 /**
  * @typedef { import("lib/types").ShopifyProduct } ShopifyProduct
@@ -36,10 +36,51 @@ import Container from 'Components/Container'
  *
  * @param { OpinewProps } props
  **/
-const OpinewProductPlugin = props => (
-  <Container constrainContent as="section" variant="section-wrapper">
-    <OpinewPlugin {...props} />
-  </Container>
-)
+const OpinewProductPlugin = props => {
+  const isNotLoaded = !window.customElements.get('opinew-plugin')
+  const prefetchProduct = ['product', 'floating'].includes(props.type)
+
+  return (
+    <Container constrainContent as="section" variant="section-wrapper">
+      {isNotLoaded && (
+        <React.Fragment>
+          <link
+            rel="stylesheet"
+            href="https://cdn.opinew.com/shop-widgets-components/v1/static/css/index.css"
+          />
+          <link rel="stylesheet" href="https://cdn.opinew.com/styles/opw-icons/style.css" />
+          <script
+            src="https://cdn.opinew.com/shop-widgets-components/v1/static/js/index.js"
+            async
+          />
+          <link
+            rel="preload"
+            href="https://cdn.opinew.com/shop-widgets/static/i18n/lang.json"
+            as="fetch"
+            type="application/json"
+            crossOrigin="anonymous"
+          />
+          <link
+            rel="preload"
+            href={'https://api.opinew.com/plugins/shop_config?shop_domain=' + props.domain}
+            as="fetch"
+            type="application/json"
+            crossOrigin="anonymous"
+          />
+          {prefetchProduct && props.product && (
+            <link
+              rel="preload"
+              href={`https://api.opinew.com/plugins/product_api?get_by=platform_product_id&platform_product_id=${props.product.externalId}&js=1&page=1`}
+              as="fetch"
+              type="application/json"
+              crossOrigin="anonymous"
+            />
+          )}
+        </React.Fragment>
+      )}
+      <OpinewPlugin {...props} />
+    </Container>
+  )
+}
 
 export default OpinewProductPlugin
