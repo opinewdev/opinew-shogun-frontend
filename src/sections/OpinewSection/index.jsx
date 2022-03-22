@@ -37,8 +37,12 @@ import * as React from 'react'
  * @param { OpinewProps } props
  **/
 const OpinewProductPlugin = props => {
-  const isNotLoaded = !window.customElements.get('opinew-plugin')
   const prefetchProduct = ['product', 'floating'].includes(props.type)
+  let isNotLoaded = false
+
+  try {
+    isNotLoaded = !window.customElements.get('opinew-plugin')
+  } catch (_) {}
 
   return (
     <Container constrainContent as="section" variant="section-wrapper">
