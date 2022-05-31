@@ -42,7 +42,7 @@ const OpinewProductPlugin = props => {
 
   try {
     isNotLoaded = !window.customElements.get('opinew-plugin')
-  } catch (_) {}
+  } catch (_) { }
 
   return (
     <Container constrainContent as="section" variant="section-wrapper">
@@ -71,17 +71,9 @@ const OpinewProductPlugin = props => {
             type="application/json"
             crossOrigin="anonymous"
           />
-          {prefetchProduct && props.product && (
-            <link
-              rel="preload"
-              href={`https://api.opinew.com/plugins/product_api?get_by=platform_product_id&platform_product_id=${props.product.externalId}&js=1&page=1`}
-              as="fetch"
-              type="application/json"
-              crossOrigin="anonymous"
-            />
-          )}
         </React.Fragment>
       )}
+
       <OpinewPlugin {...props} />
     </Container>
   )
