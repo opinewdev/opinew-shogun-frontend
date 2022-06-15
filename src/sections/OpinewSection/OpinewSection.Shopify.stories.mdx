@@ -1,11 +1,11 @@
 import {ArgsTable, Canvas, Meta, Story} from '@storybook/addon-docs'
 import {shopifyProducts} from '../../lib/mocks'
-import OpinewPlugin from '.'
+import OpinewSection from '.'
 
 
 <Meta
-    title="Sections/Shopify/OpinewPlugin"
-    component={OpinewPlugin}
+    title="Sections/Shopify/OpinewSection"
+    component={OpinewSection}
     argTypes={{
         domain: {
             control: 'text',
@@ -32,7 +32,7 @@ It can render every type of Opinew widget depending on passed arguments.
 
 ## Props
 
-<ArgsTable of={OpinewPlugin}/>
+<ArgsTable of={OpinewSection}/>
 
 ## Examples
 
@@ -41,7 +41,7 @@ It can render every type of Opinew widget depending on passed arguments.
 
 <Canvas>
     <Story name="Product Plugin" args={{type: 'product', domain: 'opinew.myshopify.com', product: shopifyProducts[0]}}>
-        {args => <OpinewPlugin {...args} style={{width: '70vw'}}/>}
+        {args => <OpinewSection {...args} style={{width: '70vw'}}/>}
     </Story>
 </Canvas>
 
@@ -49,7 +49,7 @@ It can render every type of Opinew widget depending on passed arguments.
 
 <Canvas>
     <Story name="All reviews Plugin" args={{type: 'all', domain: 'opinew.myshopify.com'}}>
-        {args => <OpinewPlugin {...args} style={{width: '70vw'}}/>}
+        {args => <OpinewSection {...args} style={{width: '70vw'}}/>}
     </Story>
 </Canvas>
 
@@ -57,7 +57,7 @@ It can render every type of Opinew widget depending on passed arguments.
 
 <Canvas>
     <Story name="Carousel Plugin" args={{type: 'carousel', domain: 'opinew.myshopify.com'}}>
-        {args => <OpinewPlugin {...args} style={{width: '70vw'}}/>}
+        {args => <OpinewSection {...args} style={{width: '70vw'}}/>}
     </Story>
 </Canvas>
 
@@ -66,7 +66,7 @@ It can render every type of Opinew widget depending on passed arguments.
 <Canvas>
     <Story name="Product Stars Plugin"
            args={{type: 'product-stars', domain: 'opinew.myshopify.com', product: shopifyProducts[0]}}>
-        {args => <OpinewPlugin {...args}/>}
+        {args => <OpinewSection {...args} style={{width: '72vw'}}/>}
     </Story>
 </Canvas>
 
@@ -75,6 +75,6 @@ It can render every type of Opinew widget depending on passed arguments.
 <Canvas>
     <Story name="Collection stars Plugin"
            args={{type: 'collection-stars', domain: 'opinew.myshopify.com', product: shopifyProducts[0]}}>
-        {args => <OpinewPlugin {...args}/>}
+        {args => <OpinewSection {...args} style={{width: '73vw'}}/>}
     </Story>
 </Canvas>

@@ -40,7 +40,7 @@ It can render every type of Opinew widget depending on passed arguments.
 ### Product Plugin
 
 <Canvas>
-    <Story name="Product Plugin" args={{type: 'product', domain: 'opinew.myshopify.com', product: shopifyProducts[0]}}>
+    <Story name="Product Plugin" args={{type: 'product', domain: 'opinew.myshopify.com', product: shopifyProducts[0].externalID}}>
         {args => <OpinewPlugin {...args} style={{width: '70vw'}}/>}
     </Story>
 </Canvas>
@@ -65,7 +65,7 @@ It can render every type of Opinew widget depending on passed arguments.
 
 <Canvas>
     <Story name="Product Stars Plugin"
-           args={{type: 'product-stars', domain: 'opinew.myshopify.com', product: shopifyProducts[0]}}>
+           args={{type: 'product-stars', domain: 'opinew.myshopify.com', product: shopifyProducts[0].externalID}}>
         {args => <OpinewPlugin {...args}/>}
     </Story>
 </Canvas>
@@ -74,7 +74,7 @@ It can render every type of Opinew widget depending on passed arguments.
 
 <Canvas>
     <Story name="Collection stars Plugin"
-           args={{type: 'collection-stars', domain: 'opinew.myshopify.com', product: shopifyProducts[0]}}>
-        {args => <OpinewPlugin {...args}/>}
+           args={{type: 'collection-stars', domain: 'opinew.myshopify.com', product: shopifyProducts[0].externalID}}>
+        {args => <OpinewPlugin {...args} style={{width: '71vw'}}/>}
     </Story>
 </Canvas>

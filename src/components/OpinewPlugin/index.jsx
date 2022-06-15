@@ -36,9 +36,9 @@ function injectAssets() {
 
       css.rel = 'stylesheet'
       css.href = BASE_PATH + 'css/index.css'
-      ;[scr, css].forEach(node => document.head.appendChild(node))
+        ;[scr, css].forEach(node => document.head.appendChild(node))
     }
-  } catch (_) {}
+  } catch (_) { }
 }
 
 /**
